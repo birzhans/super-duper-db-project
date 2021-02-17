@@ -16,9 +16,9 @@
     
 ## **Our stack**
  - **Backend.** Our team has 2 backenders and we have pretty wide option. But the trick is that we don't know same backend technologies, which makes it difficult for us to decide. We probably will write some services on different languages and then make frontend ask any of them when certain service is required. We are still thinking of which technology shall we use, but our priorities fall to:
-    - Golang
     - Ruby
+    - Golang
  - **Frontend.** We have 2 people, experienced with same framework, which gave us an easy choice:
     - Vue.js
  - **Database.** Since we have to choose SQL database only, we decided to select the easiest to use, but still high-scalable db:
-    - PostgreSQL
+    - Sqlite3
