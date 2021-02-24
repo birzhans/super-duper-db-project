@@ -92,7 +92,7 @@
 -	"round": "Jeopardy!", 
 -	"show_number": "4680"
 - }
--We decided to choose this dataset because:
+- We decided to choose this dataset because:
 -	1) It is huge. It is actually enourmous ~200.000 questions from quiz game
 -	2) It describes questions using different fields. So it's not only question and answer, but it also contains question price, date, category and round. We -think this dataset is rich enough for our project
 
