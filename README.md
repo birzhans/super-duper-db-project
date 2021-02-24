@@ -60,8 +60,8 @@ Our approximate models
 		id
 		[]User
 
-'''
-'''
+
+
 Our functional:
 	Users can:
 		1) Play quiz game
@@ -79,9 +79,9 @@ Our functional:
 		13) Upvote comment
 		14) Downvote comment
 		15) Comment other people's comments
-'''
 
-'''
+
+
 We decided to use this dataset: https://www.reddit.com/r/datasets/comments/1uyd0t/200000_jeopardy_questions_in_a_json_file/
 All the data is in JSON and CSV format and its format is:
 {
