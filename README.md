@@ -83,7 +83,7 @@
 
 - We decided to use this dataset: https://www.reddit.com/r/datasets/comments/1uyd0t/200000_jeopardy_questions_in_a_json_file/
 - All the data is in JSON and CSV format and its format is:
--{
+- {
 -	"category": "HISTORY", 
 -	"air_date": "2004-12-31",
 -	 "question": "'For the last 8 years of his life, Galileo was under house arrest for espousing this man's theory'", 
@@ -91,7 +91,7 @@
 -	"answer": "Copernicus", 
 -	"round": "Jeopardy!", 
 -	"show_number": "4680"
--}
+- }
 -We decided to choose this dataset because:
 -	1) It is huge. It is actually enourmous ~200.000 questions from quiz game
 -	2) It describes questions using different fields. So it's not only question and answer, but it also contains question price, date, category and round. We -think this dataset is rich enough for our project
