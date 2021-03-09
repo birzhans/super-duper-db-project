@@ -1,12 +1,20 @@
 nav.navbar.navbar-light.bg-light
-  .container-fluid
-    a.navbar-brand Navbar
-    form.d-flex
-      input.form-control.me-2 aria-label="Search" placeholder="Search" type="search" /
-      button.btn.btn-outline-success type="submit"  Search
 
-      - if user_signed_in?
-      	= current_user.email
-      - else
-	      = link_to 'Login', new_user_session_path 
-	      = link_to 'Register', new_user_registration_path 
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    .container-fluid
+      = link_to 'Quiz Pleaze?', root_path, class: "navbar-brand"
+    ul.navbar-nav
+      li.nav-item
+        = link_to 'Categories', categories_path, class: "nav-link actives"
+      li.nav-item
+        = link_to 'Quizzes', categories_path, class: "nav-link actives"
+
+  form.d-flex
+    input.form-control.me-2 aria-label="Search" placeholder="Search" type="search" /
+    button.btn.btn-outline-success type="submit"  Search
+
+    - if user_signed_in?
+      = link_to current_user.email, user_path, class: "btn"
+    - else
+      = link_to 'Login', new_user_session_path, class: "btn"
+      = link_to 'Register', new_user_registration_path, class: "btn"
