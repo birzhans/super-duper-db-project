@@ -1,5 +1,8 @@
-.ul.p-2
-	= render @categories
+- if @categories.any?
+	.ul.p-2
+		= render @categories
+- else
+	h2 There are no categories
 hr
 
 

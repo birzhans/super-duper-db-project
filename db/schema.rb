@@ -13,9 +13,10 @@
 ActiveRecord::Schema.define(version: 2021_03_09_132803) do
 
   create_table "categories", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["title"], name: "index_categories_on_title", unique: true
   end
 
   create_table "quizzes", force: :cascade do |t|
