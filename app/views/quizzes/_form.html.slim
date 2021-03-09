@@ -1,0 +1,17 @@
+.row.mt-3
+	.col.col-md-4
+		.card.border-primary
+			.card-body
+				= form_for([@quiz]) do |form|
+					= render 'shared/errors', resource: @quiz
+
+					.form-group.m-2
+						= form.label(:title, class: 'm-2')
+						= form.text_field(:title, class: 'm-2', placeholder: 'Some title')
+						br
+
+                        = form.label(:category, class: 'm-2')
+                        = form.collection_select(:category_id, Category.all,
+                                :id, :title, prompt: 'Select category', class: 'm-2')
+                        br
+						= form.submit('Create', class: 'btn btn-primary m-2')

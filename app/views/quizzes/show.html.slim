@@ -1,0 +1,9 @@
+h1 =@quiz.title
+h3
+  = link_to @quiz.category.title, category_path(@quiz.category)
+h3
+  | Author: #{@quiz.user.email}
+
+= link_to 'Edit', edit_quiz_path(@quiz)
+br
+= link_to 'Destroy', quiz_path(@quiz), method: :delete

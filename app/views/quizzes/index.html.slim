@@ -1,0 +1,10 @@
+- if @quizzes.any?
+    h2 All Quizzes:
+	.ul.p-2
+		= render @quizzes
+- else
+	h2 There are no quizzes
+hr
+
+
+= link_to 'New Quiz', new_quiz_path
