@@ -12,6 +12,9 @@ h3
 - else
   h3 There are no questions for this Quiz
 
+p
+	| Ready? #{@quiz.ready?}
+
 = link_to 'New question', new_quiz_question_path(@quiz)
 br
 = link_to 'Edit', edit_quiz_path(@quiz)

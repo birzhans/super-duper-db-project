@@ -2,3 +2,10 @@ h1 Profile Page
 
 h2
 	| Email: #{current_user.email}
+
+- if current_user.quizzes.any?
+	h5 Quizzes that you created:
+	ul
+		= render current_user.quizzes
+- else
+	h5 You don't have any quizzes
