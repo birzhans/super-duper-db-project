@@ -1,0 +1,25 @@
+h3
+  | Question: #{@question.title}
+h1
+  | Question for quiz  #{link_to @quiz.title, quiz_path(@quiz)}
+h3
+  = link_to @quiz.title, quiz_path(@quiz)
+h3
+  | Author: #{@quiz.user.email}
+
+
+
+- if @question.answers.any?
+  h3 Answers:
+  ul
+    = render @question.answers
+- else
+  h3 There are no answers for this Question
+
+= link_to 'New Answer', new_question_answer_path(@question)
+br
+
+= link_to 'Edit', edit_question_path(@question)
+br
+
+= link_to 'Destroy', question_path(@question), method: :delete

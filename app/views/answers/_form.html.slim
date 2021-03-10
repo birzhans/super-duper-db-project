@@ -1,0 +1,19 @@
+.row.mt-3
+	.col.col-md-4
+		.card.border-primary
+			.card-body
+				= form_for([@question, @answer]) do |form|
+					= render 'shared/errors', resource: @answer
+
+					.form-group.m-2
+						= form.label(:body, class: 'm-2')
+                        br
+						= form.text_area(:body, class: 'm-2 form-control',
+                                        placeholder: "Answer's body", rows: 4, cols:4)
+
+
+                        = form.label(:correct, class: 'm-2')
+                        = form.check_box(:correct, class: 'm-2')
+                        br
+
+						= form.submit('Submit', class: 'btn btn-primary m-2')

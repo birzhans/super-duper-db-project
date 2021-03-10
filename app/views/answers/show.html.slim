@@ -1,0 +1,11 @@
+h3
+  | Answer: #{@answer.body}
+h1
+  | Answer for question  #{link_to @question.title, question_path(@question)}
+
+
+= link_to 'New answer', new_question_answer_path(@question)
+br
+= link_to 'Edit', edit_answer_path(@answer)
+br
+= link_to 'Destroy', answer_path(@answer), method: :delete

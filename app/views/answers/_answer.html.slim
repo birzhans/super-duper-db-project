@@ -1,0 +1,4 @@
+li
+  = link_to answer.body, answer_path(answer), class: 'm-1'
+  = link_to 'Edit', edit_answer_path(answer), class: 'm-1'
+  = link_to 'Destroy', answer_path(answer), method: :delete, class: 'm-1'

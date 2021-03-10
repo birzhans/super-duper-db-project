@@ -1,9 +1,19 @@
 h1 =@quiz.title
 h3
-  = link_to @quiz.category.title, category_path(@quiz.category)
+  | Category: #{link_to @quiz.category.title, category_path(@quiz.category)}
 h3
   | Author: #{@quiz.user.email}
 
+
+- if @quiz.questions.any?
+  h3 Questions:
+  ul
+    = render @quiz.questions
+- else
+  h3 There are no questions for this Quiz
+
+= link_to 'New question', new_quiz_question_path(@quiz)
+br
 = link_to 'Edit', edit_quiz_path(@quiz)
 br
 = link_to 'Destroy', quiz_path(@quiz), method: :delete
