@@ -3,6 +3,7 @@ class Quiz < ApplicationRecord
   belongs_to :category
   has_many :questions, dependent: :destroy
   has_many :quiz_passages
+  has_many :quiz_comments
 
   validates :title, :category_id, presence: true
   validates :level, inclusion: 1..10

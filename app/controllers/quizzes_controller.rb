@@ -7,6 +7,7 @@ class QuizzesController < ApplicationController
   end
 
   def show
+    @quiz_comment = QuizComment.new
   end
 
   def new

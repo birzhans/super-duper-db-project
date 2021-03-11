@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :quizzes, dependent: :nullify
+  has_many :quiz_comments
 
   has_many :quiz_passages
   # Include default devise modules. Others available are:

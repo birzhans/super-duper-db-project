@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_115309) do
+ActiveRecord::Schema.define(version: 2021_03_11_130123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(version: 2021_03_11_115309) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["quiz_id"], name: "index_questions_on_quiz_id"
+  end
+
+  create_table "quiz_comments", force: :cascade do |t|
+    t.text "body"
+    t.bigint "quiz_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["quiz_id"], name: "index_quiz_comments_on_quiz_id"
+    t.index ["user_id"], name: "index_quiz_comments_on_user_id"
   end
 
   create_table "quiz_passages", force: :cascade do |t|
@@ -77,6 +87,8 @@ ActiveRecord::Schema.define(version: 2021_03_11_115309) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "questions", "quizzes"
+  add_foreign_key "quiz_comments", "quizzes"
+  add_foreign_key "quiz_comments", "users"
   add_foreign_key "quiz_passages", "quizzes"
   add_foreign_key "quiz_passages", "users"
   add_foreign_key "quizzes", "categories"

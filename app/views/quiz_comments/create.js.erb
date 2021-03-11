@@ -1,0 +1,6 @@
+$('.quiz-comment-errors').html('<%= render 'shared/errors', resource: @quiz_comment %>');
+
+<% if @quiz_comment.persisted? %>
+  $('.container ol').append('<%= j render @quiz_comment %>');
+  $('#Body').val('');
+<% end %>

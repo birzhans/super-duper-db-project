@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     member do
       post :start
     end
+    resources :quiz_comments, only: %i[create destroy], shallow: true
     resources :questions, shallow: true do
       resources :answers, shallow: true
     end
@@ -22,6 +23,4 @@ Rails.application.routes.draw do
       get :result
     end
   end
-
-
 end
