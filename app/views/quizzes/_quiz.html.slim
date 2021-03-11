@@ -1,2 +1,7 @@
 .li
-	= link_to quiz.title, quiz_path(quiz)
+	= link_to quiz.title, quiz_path(quiz), class: 'm-2'
+
+	- if quiz.ready?
+		= link_to 'Start', start_quiz_path(quiz), method: :post, class: 'm-2 btn btn-primary'
+	- else
+		| Quiz is not ready

@@ -1,0 +1,8 @@
+h2
+	| Hey! You have completed quiz #{@quiz_passage.quiz.title}
+
+p 
+	| Passed: #{@quiz_passage.passed}
+
+p
+	| Score: #{@quiz_passage.correct_answers} out of #{@quiz_passage.quiz.questions.count}

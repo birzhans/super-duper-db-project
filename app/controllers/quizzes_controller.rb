@@ -1,6 +1,6 @@
 class QuizzesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_quiz, only: [:show, :edit, :update, :destroy]
+  before_action :set_quiz, only: [:show, :edit, :update, :destroy, :start]
 
   def index
     @quizzes = Quiz.all
@@ -38,6 +38,10 @@ class QuizzesController < ApplicationController
   def destroy
     @quiz.destroy
     redirect_to quizzes_path, notice: "Quiz was successfully deleted."
+  end
+
+  def start
+    redirect_to QuizPassage.create(user_id: current_user.id, quiz_id: @quiz.id)
   end
 
   private

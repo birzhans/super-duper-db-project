@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quiz: one
+  user: one
+  score: 1
+  time_taken: 2021-03-11 17:53:09
+
+two:
+  quiz: two
+  user: two
+  score: 1
+  time_taken: 2021-03-11 17:53:09
