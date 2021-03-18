@@ -1,0 +1,11 @@
+h2
+	| Room: #{@room.title}
+
+p
+	| Owner: #{@room.user.email}
+
+p
+	| Code: #{@room.code}
+
+p
+	| #{'Not' if !@room.private} private

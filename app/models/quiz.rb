@@ -1,6 +1,7 @@
 class Quiz < ApplicationRecord
   belongs_to :user
   belongs_to :category
+  belongs_to :room, optional: true
   has_many :questions, dependent: :destroy
   has_many :quiz_passages
   has_many :quiz_comments

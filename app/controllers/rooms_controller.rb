@@ -14,7 +14,7 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.new(room_params)
+    @room = current_user.rooms.new(room_params)
     @room.code = Room.get_code
 
     if @room.save
@@ -44,6 +44,6 @@ class RoomsController < ApplicationController
   end
 
   def room_params
-    params.permit(:room).require(:title)
+    params.require(:room).permit(:title, :private)
   end
 end

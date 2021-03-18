@@ -9,3 +9,11 @@ h2
 		= render current_user.quizzes
 - else
 	h5 You don't have any quizzes
+
+
+- if current_user.rooms.any?
+	h5 Rooms that you own:
+	ul
+		= render current_user.rooms
+- else
+	h5 You don't own any rooms

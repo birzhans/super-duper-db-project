@@ -1,0 +1,17 @@
+.row.mt-3
+	.col.col-md-4
+		.card.border-primary
+			.card-body
+				= form_for @room do |form|
+					= render 'shared/errors', resource: @room
+
+					.form-group.m-2
+						= form.label(:title, class: 'm-2')
+						= form.text_field(:title, class: 'm-2', placeholder: 'Room title')
+						br
+
+						= form.label(:private, class: 'm-2')
+						= form.check_box(:private, class: 'm-2', placeholder: 'Room title')
+						br
+            
+						= form.submit('Create', class: 'btn btn-primary m-2')

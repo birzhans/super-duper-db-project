@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2021_03_18_075313) do
     t.string "title", null: false
     t.bigint "user_id", null: false
     t.string "code", null: false
+    t.boolean "private", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_rooms_on_user_id"

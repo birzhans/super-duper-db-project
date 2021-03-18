@@ -10,12 +10,13 @@
 						= form.text_field(:title, class: 'm-2', placeholder: 'Some title')
 						br
 
-                        = form.label(:level, class: 'm-2')
-                        = form.select(:level, 1..10, class: 'm-2', propmt: 'Some title')
-                        br
+            = form.label(:level, class: 'm-2')
+            = form.select(:level, 1..10, class: 'm-2', propmt: 'Some title')
+            br
 
-                        = form.label(:category, class: 'm-2')
-                        = form.collection_select(:category_id, Category.all,
-                                :id, :title, prompt: 'Select category', class: 'm-2')
-                        br
+            = form.label(:category, class: 'm-2')
+            = form.collection_select(:category_id, Category.all,
+                    :id, :title, prompt: 'Select category', class: 'm-2')
+            br
+
 						= form.submit('Create', class: 'btn btn-primary m-2')
