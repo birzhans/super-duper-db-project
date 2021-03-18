@@ -23,4 +23,6 @@ Rails.application.routes.draw do
       get :result
     end
   end
+
+  resources :rooms
 end
