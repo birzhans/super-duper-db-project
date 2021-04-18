@@ -1,0 +1,119 @@
+We decided to use your speed tester in this phase. Here are the results
+
+SELECT u.name, u.surname, u.quiz_games FROM users u, quiz_games qg WHERE u.id = qg.quiz_games;
+
+#1 TIME FOR testQuery: 0.014980792999267578 seconds
+#2 TIME FOR testQuery: 0.01733255386352539 seconds
+#3 TIME FOR testQuery: 0.007291555404663086 seconds
+#4 TIME FOR testQuery: 0.008318012432553801 seconds
+#5 TIME FOR testQuery: 0.020268469358073044 seconds
+
+Average: 0.013638277
+
+SELECT qg.id FROM quiz_games qg, questions qn WHERE qg.question_id = qn.id AND qg.id = (SELECT id FROM questions q WHERE q.genre="science")
+
+#1 TIME FOR testQuery: 0.913945228330852396 seconds
+#2 TIME FOR testQuery: 0.978864085493468560 seconds
+#3 TIME FOR testQuery: 0.615410847282244473 seconds
+#4 TIME FOR testQuery: 0.228041034191107225 seconds
+#5 TIME FOR testQuery: 0.697765371077362066 seconds
+
+Average: 0.686805313
+
+SELECT qg.comments FROM quiz_games qg, comments c, users u WHERE qg.comment_id = c.id AND c.user_id = u.id
+
+#1 TIME FOR testQuery: 0.060949661601949208 seconds
+#2 TIME FOR testQuery: 0.369806701641601479 seconds
+#3 TIME FOR testQuery: 0.275023677622398205 seconds
+#4 TIME FOR testQuery: 0.132607307271427033 seconds
+#5 TIME FOR testQuery: 0.056230752888787197 seconds
+
+Average: 0.17892362
+
+SELECT id,name,count(id) as num_of_users FROM users WHERE id = ANY(SELECT id FROM ranking WHERE rate > 1000) GROUP BY name;
+
+#1 TIME FOR testQuery: 0.231800153655170385 seconds
+#2 TIME FOR testQuery: 0.082961081962654118 seconds
+#3 TIME FOR testQuery: 0.116144143118320692 seconds
+#4 TIME FOR testQuery: 0.058763867737605323 seconds
+#5 TIME FOR testQuery: 0.203186965823158207 seconds
+
+Average: 0.138571242
+
+SELECT q.comments FROM question q, comments c, users u WHERE q.comment_id = c.id AND c.user_id = u.id
+
+#1 TIME FOR testQuery: 0.064687089077487386 seconds
+#2 TIME FOR testQuery: 0.599827087685847548 seconds
+#3 TIME FOR testQuery: 0.602188866102886813 seconds
+#4 TIME FOR testQuery: 0.236632861875546032 seconds
+#5 TIME FOR testQuery: 0.437930443893391772 seconds
+
+Average: 0.38825327
+
+SELECT id, question_test, scores FROM questions INNER JOIN quiz_game ON quiz_game.question_id = quesion.id;
+
+#1 TIME FOR testQuery: 0.251717561046386460 seconds
+#2 TIME FOR testQuery: 0.018877019662062073 seconds
+#3 TIME FOR testQuery: 0.053228188927231258 seconds
+#4 TIME FOR testQuery: 0.023673783620766155 seconds
+#5 TIME FOR testQuery: 0.090838172510525887 seconds
+
+Average: 0.087666945
+
+
+SELECT comment, rate FROM comments INNER JOIN users ON comments.user_id=users.id;
+
+#1 TIME FOR testQuery: 0.737599572236311459 seconds
+#2 TIME FOR testQuery: 0.499750609029089077 seconds
+#3 TIME FOR testQuery: 0.466165251054806982 seconds
+#4 TIME FOR testQuery: 0.861094404043338215 seconds
+#5 TIME FOR testQuery: 0.528310020268371930 seconds
+
+Average: 0.618583971
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
