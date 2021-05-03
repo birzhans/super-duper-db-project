@@ -1,0 +1,33 @@
+SELECT COUNT(*)
+FROM quiz e, task t, question j, quiz_record er 
+WHERE e.quizID = er.quizID AND er.quizRecordID = t.quizRecordID AND t.questionID = j.questionID 
+AND er.outTime = ANY(SELECT outTime FROM quiz_record);
+
+--Possible execution plans--
+--(quiz_record ✶ task ✶ question) ✶ quiz
+SELECT COUNT(*) 
+FROM quiz e JOIN (quiz_record er JOIN task t ON er.quizRecordID = t.quizRecordID AND er.outTime = ANY(SELECT outTime FROM quiz_record)
+                JOIN question j ON t.questionID = j.questionID)
+            ON e.quizID = er.quizID
+
+--(quiz ✶ quiz_record ✶ task) ✶ question
+SELECT COUNT(*) 
+FROM question j JOIN (quiz e JOIN quiz_record er ON e.quizID = er.quizID AND er.outTime = ANY(SELECT outTime FROM quiz_record)
+           JOIN task t ON er.quizRecordID = t.quizRecordID)
+            ON j.questionID = t.questionID
+
+--(quiz_record ✶ task) ✶ quiz ✶ question
+SELECT COUNT(*) 
+FROM question j JOIN (quiz_record er JOIN task t ON er.quizRecordID = t.quizRecordID AND er.outTime = ANY(SELECT outTime FROM quiz_record))
+            ON t.questionID = j.questionID JOIN quiz e ON e.quizID = er.quizID;
+
+--Join cardinalities--
+(quiz_record ✶ task ✶ question) ✶ quiz (2 + 2) = 4 tuples
+--TIME FOR testQuery: 0.0010001659393310547 seconds
+(project ✶ quiz) ✶ quiz_record (2 + 2) = 4 tuples
+--TIME FOR testQuery: 0.0009999275207519531 seconds
+(project ✶ quiz_record) ✶ quiz (2 + 2) = 4 tuples
+--TIME FOR testQuery: 0.001001119613647461 seconds
+
+--Analyze 
+--We decided that query 2 is the fastest and most efficient, although for passing tuples 2 and 3 of the same calculation time, query 2 wins.

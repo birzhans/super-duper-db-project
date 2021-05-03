@@ -1,0 +1,32 @@
+SELECT COUNT(*)
+FROM quiz e, quiz_record er,task t 
+WHERE e.quizID = er.quizID AND er.quizRecordID = t.quizRecordID;
+
+--Possible execution plans--
+--(quiz ✶ quiz_record) ✶ task
+SELECT COUNT(*) 
+FROM task t JOIN (quiz e JOIN quiz_record er ON e.quizID = er.quizID)
+            ON er.quizRecordID = t.quizRecordID;
+
+--(quiz_record ✶ task) ✶ quiz
+SELECT COUNT(*) 
+FROM quiz e JOIN (quiz_record er JOIN task t ON er.quizRecordID = t.quizRecordID)
+            ON e.quizID = er.quizID;
+
+--(quiz ✶ task) ✶ quiz_record
+SELECT COUNT(*) 
+FROM quiz_record er JOIN (quiz e JOIN task)
+            ON e.quizID = er.quizID AND er.quizRecordID = t.quizRecordID;
+
+--Join cardinalities--
+(quiz ✶ quiz_record) ✶ task (5613 + 5612) = 11225 tuples
+--TIME FOR testQuery: 0.0014398087158203125 seconds
+(quiz_record ✶ task) ✶ quiz (5613 + 5612) = 11225 tuples
+--TIME FOR testQuery: 0.002822239227294922 seconds
+(quiz ✶ task) ✶ quiz_record (31505769 + 5612) = 31511381 tuples
+--TIME FOR testQuery: 0.0023047223601369138 seconds
+
+--in this queries we used more datas, so accordingly, it would take us more time, but not more than a second
+
+--Analyze 
+--We decided that query 2 is the fastest and most efficient, although for passing tuples 1 and 2 of the same calculation time, query 2 wins.

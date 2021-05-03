@@ -1,0 +1,34 @@
+SELECT COUNT(*)
+FROM quiz e, project p, task t, quiz_record ea
+WHERE e.quizID = p.quizID AND ea.quizID = e.quizID 
+AND ea.quizRecordID = t.quizRecordID; 
+
+--Possible execution plans--
+--(quiz ✶ quiz_record ✶ task) ✶ project
+SELECT COUNT(*) 
+FROM project p JOIN (quiz e JOIN quiz_record ea ON ea.quizID = er.quizID 
+               JOIN task t ON ea.quizRecordID = t.quizRecordID)
+            ON p.quizID = e.quizID;
+
+--(project ✶ quiz ✶ quiz_record) ✶ task
+SELECT COUNT(*) 
+FROM task t JOIN (project p JOIN quiz e ON e.quizID = p.quizID 
+               JOIN quiz_record ea ON ea.quizID = e.quizID)
+            ON ea.quizRecordID = t.quizRecordID;
+
+--(quiz_record ✶ quiz) ✶ task ✶ project
+SELECT COUNT(*) 
+FROM task t JOIN (quiz_record ea JOIN quiz e ON ea.quizID = e.quizID)
+            ON ea.quizRecordID = t.quizRecordID 
+            JOIN project p ON e.quizID = p.quizID
+
+--Join cardinalities--
+(quiz ✶ quiz_record ✶ task) ✶ project (2 + 2) = 4 tuples
+--TIME FOR testQuery: 0.001997232437133789 seconds
+(project ✶ quiz ✶ quiz_record) ✶ task (2 + 2) = 4 tuples
+--TIME FOR testQuery: 0.0020012855529785156 seconds
+(quiz_record ✶ quiz) ✶ task ✶ project (2 + 2) = 4 tuples
+--TIME FOR testQuery: 0.0019989013671875 seconds
+
+--Analyze 
+--We decided that query 1 is the fastest and most efficient, although for passing tuples 1 and 2 and 3 of the same calculation time, query 1 wins.
